@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useInterval, useTimeoutFn } from "react-use";
 import { getRandomNumberRange } from "../../utils";
 
