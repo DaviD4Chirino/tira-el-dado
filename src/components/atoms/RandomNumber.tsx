@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useInterval, useTimeoutFn } from "react-use";
 import { getRandomNumberRange } from "../../utils";
 
@@ -12,18 +12,21 @@ export default function RandomNumber({
   min = 0,
   duration = 2000,
   speed = 100,
+  onRollEnd = () => {},
 }: {
-  min: number;
   max: number;
-  duration: number;
-  speed: number;
   finalValue: number;
+  min?: number;
+  duration?: number;
+  speed?: number;
+  onRollEnd?: () => void;
 }) {
   const [displayNumber, setDisplayNumber] = useState(0);
   const [rolling, setRolling] = useState(true);
 
   useTimeoutFn(() => {
     setRolling(false);
+    onRollEnd();
   }, duration);
 
   useInterval(
