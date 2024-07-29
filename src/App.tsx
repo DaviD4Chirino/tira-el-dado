@@ -1,10 +1,10 @@
 import "./App.css";
-import RollDialog from "./components/molecules/RollDialog";
+import RollDie from "./components/molecules/RollDie";
 
 function App() {
   return (
     <section>
-      <RollDialog buttonProps={{ variant: "text" }}>Roll Die</RollDialog>
+      <RollDie />
     </section>
   );
 }
