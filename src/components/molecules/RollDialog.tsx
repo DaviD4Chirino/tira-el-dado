@@ -29,15 +29,9 @@ export default function RollDialog({
       </Button>
       <Dialog {...dialogProps} open={open} onClose={handleClose}>
         {open && (
-          <div className="container size-40 grid place-content-center">
-            <h1 className="text-center">
-              <RandomNumber
-                min={0}
-                max={20}
-                finalValue={20}
-                speed={50}
-                duration={1000}
-              />
+          <div className="container size-40 sm:size-56 grid place-content-center">
+            <h1 className="text-center text-md sm:text-5xl">
+              <RandomNumber min={0} max={20} speed={50} duration={1000} />
             </h1>
           </div>
         )}

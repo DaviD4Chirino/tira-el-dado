@@ -1,10 +1,10 @@
 import "./App.css";
-import RollDie from "./components/molecules/RollDie";
+import Die from "./components/molecules/RollDie";
 
 function App() {
   return (
     <section>
-      <RollDie />
+      <Die />
     </section>
   );
 }

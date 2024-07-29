@@ -7,7 +7,7 @@ import { getRandomNumberRange } from "../../utils";
  * Cycles thought the min and max and ends with the finalValue
  */
 export default function RandomNumber({
-  finalValue,
+  finalValue = -1,
   max,
   min = 0,
   duration = 2000,
@@ -15,7 +15,7 @@ export default function RandomNumber({
   onRollEnd = () => {},
 }: {
   max: number;
-  finalValue: number;
+  finalValue?: number;
   min?: number;
   duration?: number;
   speed?: number;
@@ -37,8 +37,8 @@ export default function RandomNumber({
   );
 
   return (
-    <data value={rolling ? -1 : finalValue}>
-      {rolling ? displayNumber : finalValue}
+    <data value={rolling ? -1 : finalValue > -1 ? finalValue : displayNumber}>
+      {rolling ? displayNumber : finalValue > -1 ? finalValue : displayNumber}
     </data>
   );
 }
