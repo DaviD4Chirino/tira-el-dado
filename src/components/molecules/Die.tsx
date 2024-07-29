@@ -12,7 +12,7 @@ import {
 } from "react";
 import { clamp } from "../../utils";
 export default function Die() {
-  const [diceCounter, setDiceCounter] = useState(0);
+  const [diceCounter, setDiceCounter] = useState(1);
 
   return (
     <div
@@ -24,16 +24,17 @@ export default function Die() {
           className: "row-span-2",
           variant: "text",
         }}
+        trows={diceCounter}
       >
         <D20 className="size-20 sm:size-28 drop-shadow-2xl" />
       </RollDialog>
 
       <DieControls
         onMinusClick={() => {
-          setDiceCounter(clamp(diceCounter - 1, 0, 99));
+          setDiceCounter(clamp(diceCounter - 1, 1, 99));
         }}
         onPlusClick={() => {
-          setDiceCounter(clamp(diceCounter + 1, 0, 99));
+          setDiceCounter(clamp(diceCounter + 1, 1, 99));
         }}
       >
         <DieTitle faces={20} totalDices={diceCounter} />
@@ -52,7 +53,7 @@ function DieTitle({
   return (
     <p id="Title" className="align-middle col-span-4 text-center ">
       D{faces}{" "}
-      {totalDices > 0 && <sup className="align-middle">* {totalDices}</sup>}
+      {totalDices > 1 && <sup className="align-middle">* {totalDices}</sup>}
     </p>
   );
 }

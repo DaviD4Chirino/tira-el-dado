@@ -1,5 +1,5 @@
 import "./App.css";
-import Die from "./components/molecules/RollDie";
+import Die from "./components/molecules/Die";
 
 function App() {
   return (

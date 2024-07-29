@@ -13,14 +13,8 @@ export default function RandomNumber({
   duration = 2000,
   speed = 100,
   onRollEnd = () => {},
-}: {
-  max: number;
-  finalValue?: number;
-  min?: number;
-  duration?: number;
-  speed?: number;
-  onRollEnd?: () => void;
-}) {
+  className,
+}: randomNumberProps) {
   const [displayNumber, setDisplayNumber] = useState(0);
   const [rolling, setRolling] = useState(true);
 
@@ -37,7 +31,10 @@ export default function RandomNumber({
   );
 
   return (
-    <data value={rolling ? -1 : finalValue > -1 ? finalValue : displayNumber}>
+    <data
+      className={className || ""}
+      value={rolling ? -1 : finalValue > -1 ? finalValue : displayNumber}
+    >
       {rolling ? displayNumber : finalValue > -1 ? finalValue : displayNumber}
     </data>
   );
