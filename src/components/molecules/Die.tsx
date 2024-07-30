@@ -10,8 +10,11 @@ import {
   MouseEventHandler,
   useState,
 } from "react";
+
 import { clamp } from "../../utils";
-export default function Die() {
+import DieIcon from "../atoms/DieIcon";
+
+export default function Die({ faces }: dieProps) {
   const [diceCounter, setDiceCounter] = useState(1);
 
   return (
@@ -25,8 +28,12 @@ export default function Die() {
           variant: "text",
         }}
         trows={diceCounter}
+        faces={faces}
       >
-        <D20 className="size-20 sm:size-28 drop-shadow-2xl" />
+        <DieIcon
+          faces={faces}
+          iconProps={{ className: "size-20 sm:size-28 drop-shadow-2xl" }}
+        />
       </RollDialog>
 
       <DieControls
@@ -37,7 +44,7 @@ export default function Die() {
           setDiceCounter(clamp(diceCounter + 1, 1, 99));
         }}
       >
-        <DieTitle faces={20} totalDices={diceCounter} />
+        <DieTitle faces={faces} totalDices={diceCounter} />
       </DieControls>
     </div>
   );

@@ -1,9 +1,14 @@
+type dieProps = {
+  faces: number;
+};
+
 type rollDialogProps = {
   children: any;
   dialogProps?: DialogProps;
   buttonProps?: ButtonProps;
   randomNumberProps?: randomNumberProps;
   trows?: number;
+  faces: number;
 };
 
 type randomNumberProps = {

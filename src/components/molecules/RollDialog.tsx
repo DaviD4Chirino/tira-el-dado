@@ -8,11 +8,12 @@ export default function RollDialog({
   children,
   dialogProps = { open: false },
   buttonProps,
-  trows = 3,
+  trows = 1,
+  faces,
 }: rollDialogProps) {
   const [open, setOpen] = useState(false);
   const [result, setResult] = useState(0);
-  const [rolls, setRolls] = useState<number[]>(populateRolls(trows, 20));
+  const [rolls, setRolls] = useState<number[]>(populateRolls(trows, faces));
 
   function handleClickOpen() {
     setOpen(true);
@@ -25,7 +26,7 @@ export default function RollDialog({
 
   useEffect(() => {
     if (open) {
-      setRolls(populateRolls(trows, 20));
+      setRolls(populateRolls(trows, faces));
     }
 
     return () => {};
@@ -53,7 +54,7 @@ export default function RollDialog({
               {/* 1400 */}
               {result > -1 && (
                 <DieRollAnimation
-                  faces={20}
+                  faces={faces}
                   value={result}
                   duration={800 + 200 * (rolls.length - 1)}
                 />
@@ -66,7 +67,7 @@ export default function RollDialog({
                   <>
                     <DieRollAnimation
                       value={roll}
-                      faces={20}
+                      faces={faces}
                       duration={800 + 200 * index}
                       key={index}
                       className="min-w-5"
