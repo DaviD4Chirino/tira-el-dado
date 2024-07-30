@@ -7,8 +7,8 @@ type rollDialogProps = {
 };
 
 type randomNumberProps = {
-  max: number;
-  finalValue?: number;
+  faces: number;
+  value: number;
   min?: number;
   duration?: number;
   speed?: number;

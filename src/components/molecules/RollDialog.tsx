@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, ButtonProps, Dialog, DialogProps } from "@mui/material";
-import { useState } from "react";
-import RandomNumber from "../atoms/RandomNumber";
+import { Button, Dialog } from "@mui/material";
+import { useEffect, useState } from "react";
+import DieRollAnimation from "../atoms/DieRollAnimation";
+import { getDieRoll, getSumArray } from "../../utils";
 
 export default function RollDialog({
   children,
   dialogProps = { open: false },
   buttonProps,
-  trows = 1,
+  trows = 3,
 }: rollDialogProps) {
   const [open, setOpen] = useState(false);
+  const [result, setResult] = useState(0);
+  const [rolls, setRolls] = useState<number[]>(populateRolls(trows, 20));
 
   function handleClickOpen() {
     setOpen(true);
@@ -17,7 +20,21 @@ export default function RollDialog({
 
   function handleClose() {
     setOpen(false);
+    // setResult(0);
   }
+
+  useEffect(() => {
+    if (open) {
+      setRolls(populateRolls(trows, 20));
+    }
+
+    return () => {};
+  }, [open]);
+
+  useEffect(() => {
+    setResult(getSumArray(rolls));
+    return () => {};
+  }, [rolls]);
 
   return (
     <>
@@ -26,29 +43,78 @@ export default function RollDialog({
       </Button>
       <Dialog {...dialogProps} open={open} onClose={handleClose}>
         {open && (
-          <div className=" size-40 sm:size-60 grid grid-rows-10 content-center items-center overflow-hidden">
-            <h1 className="text-center text-md sm:text-5xl row-span-9">
-              <RandomNumber min={1} max={20} speed={50} duration={1000} />
+          <div className="size-52 sm:size-60 grid grid-rows-10 content-center items-center overflow-visible">
+            <h1
+              className={`text-center sm:text-5xl ${
+                trows > 1 ? "row-span-8" : "row-span-10"
+              }`}
+              id="Result"
+            >
+              {/* 1400 */}
+              {result > -1 && (
+                <DieRollAnimation
+                  faces={20}
+                  value={result}
+                  duration={800 + 200 * (rolls.length - 1)}
+                />
+              )}
             </h1>
-            {trows > 1 && (
-              <div className="px-2 h-[5ch] grid grid-cols-10  justify-center  text-center overflow-y-scroll">
-                {[...Array(trows)].map((e, i) => (
+
+            {rolls.length > 1 && (
+              <div className="flex text-center px-5 overflow-x-auto   row-span-2">
+                {rolls.map((roll: number, index: number) => (
                   <>
-                    <RandomNumber
-                      key={e}
-                      min={1}
-                      max={20}
-                      speed={50}
-                      duration={1000}
+                    <DieRollAnimation
+                      value={roll}
+                      faces={20}
+                      duration={800 + 200 * index}
+                      key={index}
+                      className="min-w-5"
                     />
-                    {i + 1 < Array(trows).length && <span className="">|</span>}
+
+                    {index + 1 < rolls.length && (
+                      <span key={index + 999} className="min-w-5">
+                        |
+                      </span>
+                    )}
                   </>
                 ))}
               </div>
             )}
+            {/* {trows > 1 && (
+              <div
+                className="flex text-center px-5 overflow-x-auto   row-span-2"
+                key={trows}
+              >
+                {[...Array(trows)].map((e, i) => (
+                  <>
+                    <DieRollAnimation
+                      key={i}
+                      min={1}
+                      max={20}
+                      speed={50}
+                      duration={1000 + i * 200}
+                      className="min-w-5"
+                      onRollEnd={addResult}
+                    />
+                    
+                  </>
+                ))}
+              </div>
+            )} */}
           </div>
         )}
       </Dialog>
     </>
   );
+}
+
+function populateRolls(length: number, faces: number): number[] {
+  var arr: number[] = [];
+
+  for (let i = 0; i < length; i++) {
+    arr.push(getDieRoll(faces));
+  }
+
+  return arr;
 }
