@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["public/vite.svg"],
+      includeAssets: ["vite.svg"],
       manifest: {
         name: "Tira el Dado",
         short_name: "tira-el-dado",
@@ -16,12 +16,12 @@ export default defineConfig({
         theme_color: "#474646",
         icons: [
           {
-            src: "public/vite.svg",
+            src: "vite.svg",
             sizes: "192x192",
             type: "image/svg",
           },
           {
-            src: "public/vite.svg",
+            src: "vite.svg",
             sizes: "512x512",
             type: "image/svg",
           },
