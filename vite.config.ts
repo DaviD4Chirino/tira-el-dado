@@ -25,6 +25,16 @@ export default defineConfig({
             sizes: "512x512",
             type: "image/png",
           },
+          {
+            src: "/vite.svg",
+            sizes: "512x512",
+            type: "image/svg",
+          },
+          {
+            src: "/favicon.ico",
+            sizes: "512x512",
+            type: "image/x-icon",
+          },
         ],
       },
     }),
