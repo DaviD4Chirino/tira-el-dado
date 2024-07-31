@@ -1,7 +1,7 @@
-import { Button } from "@mui/material";
-import { GiDiceTwentyFacesTwenty as D20 } from "react-icons/gi";
+import { Button, SxProps } from "@mui/material";
 import { TiMinus as Minus, TiPlus as Plus } from "react-icons/ti";
 import RollDialog from "./RollDialog";
+
 import {
   ReactElement,
   JSXElementConstructor,
@@ -13,26 +13,28 @@ import {
 
 import { clamp } from "../../utils";
 import DieIcon from "../atoms/DieIcon";
+import { Theme } from "@emotion/react";
 
 export default function Die({ faces }: dieProps) {
   const [diceCounter, setDiceCounter] = useState(1);
 
   return (
     <div
-      className="max-w-40 sm:max-w-48 aspect-square grid grid-rows-2 rounded-md shadow-2xl"
+      className=" max-w-32 lg:max-w-48 aspect-square grid grid-rows-2 rounded-md outline outline-1 outline-primary shadow-inner"
       id="Die"
     >
       <RollDialog
         buttonProps={{
           className: "row-span-2",
-          variant: "text",
         }}
         trows={diceCounter}
         faces={faces}
       >
         <DieIcon
           faces={faces}
-          iconProps={{ className: "size-20 sm:size-28 drop-shadow-2xl" }}
+          iconProps={{
+            className: "size-14 lg:size-28 drop-shadow-2xl",
+          }}
         />
       </RollDialog>
 
@@ -58,10 +60,12 @@ function DieTitle({
   totalDices: number;
 }) {
   return (
-    <p id="Title" className="align-middle col-span-4 text-center ">
-      D{faces}{" "}
-      {totalDices > 1 && <sup className="align-middle">* {totalDices}</sup>}
-    </p>
+    <b
+      id="Title"
+      className="align-middle col-span-4 text-center text-sm sm:text-base h-7 sm:h-auto flex items-center content-center justify-center "
+    >
+      {totalDices > 1 && totalDices}D{faces}
+    </b>
   );
 }
 
@@ -84,6 +88,7 @@ function DieControls({
 }) {
   function CustomButton(props: {
     onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+    sx?: SxProps<Theme>;
     children:
       | string
       | number
@@ -104,8 +109,11 @@ function DieControls({
           minHeight: 0,
           padding: 0,
           margin: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          ...props.sx,
         }}
-        className=" col-span-3"
+        className=" col-span-3 "
         onClick={props.onClick}
       >
         {props.children}
@@ -114,11 +122,11 @@ function DieControls({
   }
   return (
     <div className="grid gap-3 grid-cols-10 rounded-md justify-between   bg-secondary">
-      <CustomButton onClick={onMinusClick}>
+      <CustomButton sx={{ borderBottomRightRadius: 0 }} onClick={onMinusClick}>
         <Minus className="size-5" />
       </CustomButton>
       {children}
-      <CustomButton onClick={onPlusClick}>
+      <CustomButton sx={{ borderBottomLeftRadius: 0 }} onClick={onPlusClick}>
         <Plus className="size-5" />
       </CustomButton>
     </div>

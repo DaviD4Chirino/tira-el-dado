@@ -16,6 +16,9 @@ const theme = createTheme({
     warning: {
       main: "#141414",
     },
+    text: {
+      primary: "#050315",
+    },
   },
 });
 export default function MUIThemeProvider(props: {

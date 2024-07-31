@@ -21,7 +21,6 @@ export default function RollDialog({
 
   function handleClose() {
     setOpen(false);
-    // setResult(0);
   }
 
   useEffect(() => {
@@ -51,12 +50,11 @@ export default function RollDialog({
               }`}
               id="Result"
             >
-              {/* 1400 */}
               {result > -1 && (
                 <DieRollAnimation
-                  faces={faces}
+                  faces={faces * rolls.length - 1}
                   value={result}
-                  duration={800 + 200 * (rolls.length - 1)}
+                  duration={800}
                 />
               )}
             </h1>
@@ -68,9 +66,9 @@ export default function RollDialog({
                     <DieRollAnimation
                       value={roll}
                       faces={faces}
-                      duration={800 + 200 * index}
+                      duration={800}
                       key={index}
-                      className="min-w-5"
+                      className="min-w-5 font-bold"
                     />
 
                     {index + 1 < rolls.length && (
@@ -82,27 +80,6 @@ export default function RollDialog({
                 ))}
               </div>
             )}
-            {/* {trows > 1 && (
-              <div
-                className="flex text-center px-5 overflow-x-auto   row-span-2"
-                key={trows}
-              >
-                {[...Array(trows)].map((e, i) => (
-                  <>
-                    <DieRollAnimation
-                      key={i}
-                      min={1}
-                      max={20}
-                      speed={50}
-                      duration={1000 + i * 200}
-                      className="min-w-5"
-                      onRollEnd={addResult}
-                    />
-                    
-                  </>
-                ))}
-              </div>
-            )} */}
           </div>
         )}
       </Dialog>
