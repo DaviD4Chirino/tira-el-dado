@@ -15,6 +15,8 @@ import { clamp } from "../../utils";
 import DieIcon from "../atoms/DieIcon";
 import { Theme } from "@emotion/react";
 
+import "./css/Die.css";
+
 export default function Die({ faces }: dieProps) {
   const [diceCounter, setDiceCounter] = useState(1);
 
@@ -33,7 +35,7 @@ export default function Die({ faces }: dieProps) {
         <DieIcon
           faces={faces}
           iconProps={{
-            className: "size-14 lg:size-28 drop-shadow-2xl",
+            className: "size-14 lg:size-28 drop-shadow-2xl icon transition-all",
           }}
         />
       </RollDialog>
@@ -62,7 +64,7 @@ function DieTitle({
   return (
     <b
       id="Title"
-      className="align-middle col-span-4 text-center text-sm sm:text-base h-7 sm:h-auto flex items-center content-center justify-center "
+      className="align-middle col-span-4 text-center text-sm sm:text-base h-7 sm:h-auto flex items-center content-center justify-center font-mono"
     >
       {totalDices > 1 && totalDices}D{faces}
     </b>

@@ -38,7 +38,7 @@ export default function RollDialog({
 
   return (
     <>
-      <Button {...buttonProps} onClick={handleClickOpen}>
+      <Button {...buttonProps} id="RollDialogButton" onClick={handleClickOpen}>
         {children}
       </Button>
       <Dialog {...dialogProps} open={open} onClose={handleClose}>

@@ -4,7 +4,6 @@ import App from "./App.tsx";
 import "./index.css";
 import MUIThemeProvider from "./MUIThemeProvider.tsx";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-// import { register } from "../";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

@@ -1,0 +1,7 @@
+#Die {
+  .MuiButton-root#RollDialogButton:hover {
+    .icon {
+      transform: scale(1.1);
+    }
+  }
+}

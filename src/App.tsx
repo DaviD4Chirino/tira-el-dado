@@ -1,4 +1,3 @@
-import "./App.css";
 import DiceSection from "./components/organisms/DiceSection";
 
 function App() {
