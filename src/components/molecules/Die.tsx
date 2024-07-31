@@ -86,40 +86,6 @@ function DieControls({
     | null
     | undefined;
 }) {
-  function CustomButton(props: {
-    onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
-    sx?: SxProps<Theme>;
-    children:
-      | string
-      | number
-      | boolean
-      | ReactElement<any, string | JSXElementConstructor<any>>
-      | Iterable<ReactNode>
-      | ReactPortal
-      | null
-      | undefined;
-  }) {
-    return (
-      <Button
-        disableElevation
-        variant="contained"
-        id="Minus"
-        sx={{
-          minWidth: 0,
-          minHeight: 0,
-          padding: 0,
-          margin: 0,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-          ...props.sx,
-        }}
-        className=" col-span-3 "
-        onClick={props.onClick}
-      >
-        {props.children}
-      </Button>
-    );
-  }
   return (
     <div className="grid gap-3 grid-cols-10 rounded-md justify-between   bg-secondary">
       <CustomButton sx={{ borderBottomRightRadius: 0 }} onClick={onMinusClick}>
@@ -130,5 +96,40 @@ function DieControls({
         <Plus className="size-5" />
       </CustomButton>
     </div>
+  );
+}
+
+function CustomButton(props: {
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  sx?: SxProps<Theme>;
+  children:
+    | string
+    | number
+    | boolean
+    | ReactElement<any, string | JSXElementConstructor<any>>
+    | Iterable<ReactNode>
+    | ReactPortal
+    | null
+    | undefined;
+}) {
+  return (
+    <Button
+      disableElevation
+      variant="contained"
+      id="Minus"
+      sx={{
+        minWidth: 0,
+        minHeight: 0,
+        padding: 0,
+        margin: 0,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        ...props.sx,
+      }}
+      className=" col-span-3 "
+      onClick={props.onClick}
+    >
+      {props.children}
+    </Button>
   );
 }
