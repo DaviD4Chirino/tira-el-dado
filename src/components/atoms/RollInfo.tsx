@@ -32,3 +32,13 @@ export function RollResult({ rolls }: { rolls: number[] }) {
   const result: number = getSumArray(rolls);
   return <data value={result}>{result}</data>;
 }
+
+export function RollDate({ date }: { date: Date }) {
+  const time = date.toLocaleString("es", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+  return <data value={time}>{time}</data>;
+}
