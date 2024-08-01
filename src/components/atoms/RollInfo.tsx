@@ -8,8 +8,10 @@ export function RollTitle({ faces, dice }: { faces: number; dice: number }) {
 export function RollsArray({
   rolls,
   naked = false,
+  className,
 }: {
   rolls: number[];
+  className?: string;
   /**
    * Determines wether it returns a data tag or just the numbers
    */
@@ -20,7 +22,7 @@ export function RollsArray({
   }
 
   return (
-    <data>
+    <data className={className}>
       {rolls.map(
         (roll, index) => `${roll}${index != rolls.length - 1 ? ", " : ""}`
       )}

@@ -16,7 +16,7 @@ import DieIcon from "../atoms/DieIcon";
 import { Theme } from "@emotion/react";
 
 import "./css/Die.css";
-import { RollDate, RollTitle } from "../atoms/RollInfo";
+import { RollTitle } from "../atoms/RollInfo";
 
 export default function Die({ faces }: dieProps) {
   const [diceCounter, setDiceCounter] = useState(1);
@@ -26,7 +26,7 @@ export default function Die({ faces }: dieProps) {
       className=" max-w-32 lg:max-w-48 aspect-square grid grid-rows-2 rounded-md outline outline-1 outline-primary shadow-inner"
       id="Die"
     >
-      <RollDate date={new Date()} />
+      {/* <RollDate date={new Date()} /> */}
       <RollDialog
         buttonProps={{
           className: "row-span-2",
@@ -65,7 +65,7 @@ function DieTitle({
   return (
     <b
       id="Title"
-      className="align-middle col-span-4 text-center text-sm sm:text-base h-7 sm:h-auto flex items-center content-center justify-center font-mono"
+      className="align-middle col-span-4 text-center text-sm md:text-base h-7 sm:h-auto flex items-center content-center justify-center font-mono"
     >
       <RollTitle faces={faces} dice={totalDices} />
     </b>
