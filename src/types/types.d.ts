@@ -20,3 +20,22 @@ type randomNumberProps = {
   onRollEnd?: () => void;
   className?: string;
 };
+
+type rollInfo = {
+  diceAmount: number;
+  result: number;
+  faces: number;
+  rolls: number[];
+  date: Date;
+};
+
+type rollLog = {
+  rolls: number[];
+  date: Date;
+};
+
+type historyContext = {
+  history: rollInfo[] | undefined;
+  setHistory: React.Dispatch<React.SetStateAction<rollInfo[] | undefined>>;
+  logRolls: (rolls: rollInfo["rolls"], faces: rollInfo["faces"]) => void;
+};

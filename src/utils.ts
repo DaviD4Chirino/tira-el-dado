@@ -39,3 +39,22 @@ export function getSumArray(arr: number[]): number {
 
   return n;
 }
+
+export function getRollInfo(rolls: number[], faces: number): rollInfo {
+  const data: rollInfo = {
+    faces,
+    rolls,
+    result: getSumArray(rolls),
+    diceAmount: rolls.length,
+    date: new Date(),
+  };
+
+  return data;
+}
+
+export function generateRollLog(rolls: number[]): rollLog {
+  return {
+    rolls,
+    date: new Date(),
+  };
+}

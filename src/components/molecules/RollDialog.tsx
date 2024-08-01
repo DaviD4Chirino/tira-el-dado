@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Dialog } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DieRollAnimation from "../atoms/DieRollAnimation";
 import { getDieRoll, getSumArray } from "../../utils";
+import { HistoryContext } from "../../contexts/History";
+
+//TODO: Implement a history Context (what a pain)
 
 export default function RollDialog({
   children,
@@ -15,6 +18,8 @@ export default function RollDialog({
   const [result, setResult] = useState(0);
   const [rolls, setRolls] = useState<number[]>(populateRolls(trows, faces));
 
+  const { logRolls } = useContext(HistoryContext);
+
   function handleClickOpen() {
     setOpen(true);
   }
@@ -25,7 +30,8 @@ export default function RollDialog({
 
   useEffect(() => {
     if (open) {
-      setRolls(populateRolls(trows, faces));
+      const newRolls: number[] = populateRolls(trows, faces);
+      setRolls(newRolls);
     }
 
     return () => {};
@@ -33,6 +39,7 @@ export default function RollDialog({
 
   useEffect(() => {
     setResult(getSumArray(rolls));
+
     return () => {};
   }, [rolls]);
 
@@ -55,6 +62,9 @@ export default function RollDialog({
                   faces={faces * rolls.length - 1}
                   value={result}
                   duration={800}
+                  onRollEnd={() => {
+                    logRolls(rolls, faces);
+                  }}
                 />
               )}
             </h1>
