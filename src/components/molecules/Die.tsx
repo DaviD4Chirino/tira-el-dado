@@ -16,6 +16,7 @@ import DieIcon from "../atoms/DieIcon";
 import { Theme } from "@emotion/react";
 
 import "./css/Die.css";
+import { RollTitle } from "../atoms/RollInfo";
 
 export default function Die({ faces }: dieProps) {
   const [diceCounter, setDiceCounter] = useState(1);
@@ -66,7 +67,7 @@ function DieTitle({
       id="Title"
       className="align-middle col-span-4 text-center text-sm sm:text-base h-7 sm:h-auto flex items-center content-center justify-center font-mono"
     >
-      {totalDices > 1 && totalDices}D{faces}
+      <RollTitle faces={faces} dice={totalDices} />
     </b>
   );
 }

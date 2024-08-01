@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import DieRollAnimation from "../atoms/DieRollAnimation";
 import { getDieRoll, getSumArray } from "../../utils";
 import { HistoryContext } from "../../contexts/History";
+// import { RollResult, RollsArray } from "../atoms/RollInfo";
 
 //TODO: Implement a history Context (what a pain)
 
