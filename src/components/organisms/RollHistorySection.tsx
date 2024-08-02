@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import RollData from "../molecules/RollData";
 import { HistoryContext } from "../../contexts/History";
-import { Button } from "@mui/material";
 
 export default function RollHistorySection({ logs = 3 }: { logs?: number }) {
   const { history } = useContext(HistoryContext);
@@ -14,7 +13,12 @@ export default function RollHistorySection({ logs = 3 }: { logs?: number }) {
           newestRolls
             .reverse()
             .map((roll, index) => (
-              <RollData rollInfo={roll} variant="inline" key={index} />
+              <RollData
+                rollInfo={roll}
+                variant="inline"
+                key={index}
+                style={{ zoom: 1 - index * 0.15 }}
+              />
             ))}
       </div>
     </section>

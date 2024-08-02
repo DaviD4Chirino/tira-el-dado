@@ -38,8 +38,11 @@ function HistoryProvider({ children }: { children: any }) {
   }
 
   useEffect(() => {
-    console.log(history);
-
+    // * Keeping the logs under 21
+    if (history && history.length >= 20) {
+      const trimmedHistory = history.slice(Math.max(history.length - 20, 1));
+      setHistory(trimmedHistory);
+    }
     return () => {};
   }, [history]);
 
