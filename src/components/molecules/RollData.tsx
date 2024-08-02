@@ -88,7 +88,6 @@ function InfoButton({
   };
   return (
     <>
-      {" "}
       <Button
         onClick={handleClickOpen}
         sx={{
