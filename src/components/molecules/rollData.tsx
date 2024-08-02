@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from "@mui/material";
-import { RollResult, RollsArray, RollTitle } from "../atoms/RollInfo";
+import { RollDate, RollResult, RollsArray, RollTitle } from "../atoms/RollInfo";
 import { useState } from "react";
 import HistoryDialog from "./HistoryDialog";
 
@@ -14,7 +14,7 @@ export default function RollData({
   rollInfo: rollInfo;
   variant: "inline" | "contained";
 }) {
-  const { rolls, faces, diceAmount } = rollInfo;
+  const { rolls, faces, diceAmount, result, date } = rollInfo;
 
   switch (variant) {
     case "inline":
@@ -34,7 +34,37 @@ export default function RollData({
       );
 
     case "contained":
-      return <li id="RollItem" className={className + " "} style={style}></li>;
+      return (
+        <li
+          id="RollItem"
+          className={`${
+            className ? className : ""
+          } grid grid-cols-[0.1fr_1fr_.3fr] 
+          gap-3
+          `}
+          style={style}
+        >
+          <div
+            className="
+          bg-secondary rounded size-20 aspect-square
+          flex place-content-center place-items-center
+          
+          "
+          >
+            <h4 className="">{result}</h4>
+          </div>
+          <p className="grid grid-rows-[auto_1fr] ">
+            <b>
+              <RollTitle dice={diceAmount} faces={faces} />
+            </b>
+            <p className="inline text-xs overflow-y-auto max-h-12">
+              (<RollsArray rolls={rolls} />)
+            </p>
+          </p>
+
+          <RollDate date={new Date(date)} />
+        </li>
+      );
 
     default:
       return <></>;
@@ -73,12 +103,12 @@ function InfoButton({
       >
         <div
           className="
-      w-full
-      flex gap-2
-      flex-shrink-0
-      place-items-center
-      align-baseline 
-      "
+            w-full
+            flex gap-2
+            flex-shrink-0
+            place-items-center
+            align-baseline 
+          "
         >
           <b className="text-base  text-left   ">
             <RollResult rolls={rolls} />

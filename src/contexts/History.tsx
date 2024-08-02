@@ -16,6 +16,7 @@ const historyInitialValue: historyContext = {
   ],
   setHistory() {},
   logRolls(_rolls: rollLog["rolls"]) {},
+  eraseHistory() {},
 };
 
 const HistoryContext: React.Context<historyContext> =
@@ -29,7 +30,7 @@ function HistoryProvider({ children }: { children: any }) {
   );
  */
 
-  const [history, setHistory, erase] = useLocalStorage(
+  const [history, setHistory, eraseHistory] = useLocalStorage(
     "history",
     historyInitialValue.history
   );
@@ -54,6 +55,7 @@ function HistoryProvider({ children }: { children: any }) {
     history,
     setHistory,
     logRolls,
+    eraseHistory,
   };
 
   return (

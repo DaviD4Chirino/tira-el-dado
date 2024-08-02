@@ -1,8 +1,12 @@
 {
   "name": "tira-el-dado",
   "private": true,
-  "version": "0.0.2",
+  "version": "1.0.0",
   "type": "module",
+  "author": {
+    "name": "DaviD4C",
+    "email": "genarodavid@gmail.com"
+  },
   "homepage": ".",
   "scripts": {
     "dev": "vite",

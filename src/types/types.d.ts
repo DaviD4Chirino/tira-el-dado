@@ -29,13 +29,9 @@ type rollInfo = {
   date: Date;
 };
 
-type rollLog = {
-  rolls: number[];
-  date: Date;
-};
-
 type historyContext = {
   history: rollInfo[] | undefined;
   setHistory: React.Dispatch<React.SetStateAction<rollInfo[] | undefined>>;
+  eraseHistory: () => void;
   logRolls: (rolls: rollInfo["rolls"], faces: rollInfo["faces"]) => void;
 };
