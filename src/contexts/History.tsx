@@ -15,7 +15,7 @@ const historyInitialValue: historyContext = {
     },
   ],
   setHistory() {},
-  logRolls(_rolls: rollLog["rolls"]) {},
+  logRolls(_rolls: rollInfo["rolls"]) {},
   eraseHistory() {},
 };
 

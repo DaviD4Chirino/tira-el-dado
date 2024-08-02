@@ -51,10 +51,3 @@ export function getRollInfo(rolls: number[], faces: number): rollInfo {
 
   return data;
 }
-
-export function generateRollLog(rolls: number[]): rollLog {
-  return {
-    rolls,
-    date: new Date(),
-  };
-}
