@@ -2,6 +2,8 @@ import { createContext, useEffect } from "react";
 import { useLocalStorage } from "react-use";
 import { getRollInfo } from "../utils";
 
+const maxHistory: number = 20;
+
 const historyInitialValue: historyContext = {
   history: [
     {
@@ -39,8 +41,10 @@ function HistoryProvider({ children }: { children: any }) {
 
   useEffect(() => {
     // * Keeping the logs under 21
-    if (history && history.length >= 20) {
-      const trimmedHistory = history.slice(Math.max(history.length - 20, 1));
+    if (history && history.length >= maxHistory) {
+      const trimmedHistory = history.slice(
+        Math.max(history.length - maxHistory, 1)
+      );
       setHistory(trimmedHistory);
     }
     return () => {};

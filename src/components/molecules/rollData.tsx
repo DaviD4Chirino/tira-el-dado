@@ -23,9 +23,9 @@ export default function RollData({
           id="RollItem"
           className={`${className ? className : ""} 
           bg-secondary 
-          rounded-full w-min max-w-44  
+          rounded-full w-min max-w-64  
           text-sm list-none 
-          flex items-baseline gap-2
+          
           `}
           style={style}
         >
@@ -71,17 +71,27 @@ function InfoButton({
         className="bg-secondary w-full"
         {...buttonProps}
       >
-        <b className="text-base min-w-[4ch]">
-          <RollResult rolls={rolls} />
-        </b>
-        <p className="text-sm inline min-w-[6ch]">
-          <RollTitle faces={faces} dice={diceAmount} />
-        </p>
-        {rolls.length > 1 && (
-          <p className="inline truncate text-ellipsis flex-1 text-xs min-w-[5ch] ">
-            (<RollsArray rolls={rolls} />)
+        <div
+          className="
+      w-full
+      flex gap-2
+      flex-shrink-0
+      place-items-center
+      align-baseline 
+      "
+        >
+          <b className="text-base  text-left   ">
+            <RollResult rolls={rolls} />
+          </b>
+          <p className={`text-sm inline  text-left  `}>
+            <RollTitle faces={faces} dice={diceAmount} />
           </p>
-        )}
+          {rolls.length > 1 && (
+            <p className="inline truncate  text-left text-ellipsis flex-1 text-xs opacity-80 ">
+              (<RollsArray rolls={rolls} />)
+            </p>
+          )}
+        </div>
       </Button>
       <HistoryDialog open={open} setOpen={setOpen} />
     </>
