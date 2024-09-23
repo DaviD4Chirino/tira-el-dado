@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { getSumArray } from "../../utils";
 
 export function RollTitle({ faces, dice }: { faces: number; dice: number }) {
@@ -36,11 +37,6 @@ export function RollResult({ rolls }: { rolls: number[] }) {
 }
 
 export function RollDate({ date }: { date: Date }) {
-  const time = date.toLocaleString("es", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  });
+  const time = dayjs(date).format("hh:mm:ss");
   return <data value={time}>{time}</data>;
 }

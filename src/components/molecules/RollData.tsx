@@ -22,7 +22,7 @@ export default function RollData({
         <li
           id="RollItem"
           className={`${className ? className : ""} 
-          bg-secondary 
+          bg-grey-300
           rounded-full w-min max-w-64  
           text-sm list-none 
           
@@ -46,7 +46,7 @@ export default function RollData({
         >
           <div
             className="
-          bg-secondary rounded size-20 aspect-square
+          bg-grey-300 rounded size-20 aspect-square
           flex place-content-center place-items-center
           
           "
@@ -98,7 +98,7 @@ function InfoButton({
           color: "inherit",
           borderRadius: 999,
         }}
-        className="bg-secondary w-full"
+        className="bg-grey-300 w-full"
         {...buttonProps}
       >
         <div

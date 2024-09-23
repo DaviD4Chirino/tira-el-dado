@@ -2,14 +2,7 @@ import { Button, SxProps } from "@mui/material";
 import { TiMinus as Minus, TiPlus as Plus } from "react-icons/ti";
 import RollDialog from "./RollDialog";
 
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-  MouseEventHandler,
-  useState,
-} from "react";
+import { MouseEventHandler, useState } from "react";
 
 import { clamp } from "../../utils";
 import DieIcon from "../atoms/DieIcon";
@@ -23,7 +16,7 @@ export default function Die({ faces }: dieProps) {
 
   return (
     <div
-      className=" max-w-32 lg:max-w-48 aspect-square grid grid-rows-2 rounded-md outline outline-1 outline-primary shadow-inner"
+      className=" max-w-32 lg:max-w-48 aspect-square grid grid-rows-2 rounded-md outline outline-1 shadow-inner"
       id="Die"
     >
       {/* <RollDate date={new Date()} /> */}
@@ -79,18 +72,10 @@ function DieControls({
 }: {
   onMinusClick: MouseEventHandler<HTMLButtonElement> | undefined;
   onPlusClick: MouseEventHandler<HTMLButtonElement> | undefined;
-  children:
-    | string
-    | number
-    | boolean
-    | ReactElement<any, string | JSXElementConstructor<any>>
-    | Iterable<ReactNode>
-    | ReactPortal
-    | null
-    | undefined;
+  children: React.ReactNode;
 }) {
   return (
-    <div className="grid gap-3 grid-cols-10 rounded-md justify-between   bg-secondary">
+    <div className="grid gap-3 grid-cols-10 rounded-md justify-between   bg-grey-300">
       <CustomButton sx={{ borderBottomRightRadius: 0 }} onClick={onMinusClick}>
         <Minus className="size-5" />
       </CustomButton>
@@ -105,15 +90,7 @@ function DieControls({
 function CustomButton(props: {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   sx?: SxProps<Theme>;
-  children:
-    | string
-    | number
-    | boolean
-    | ReactElement<any, string | JSXElementConstructor<any>>
-    | Iterable<ReactNode>
-    | ReactPortal
-    | null
-    | undefined;
+  children: React.ReactNode;
 }) {
   return (
     <Button
